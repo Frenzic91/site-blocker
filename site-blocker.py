@@ -5,9 +5,19 @@ hosts_path = '/mnt/c/Windows/System32/drivers/etc/hosts'
 redirect_ip = '127.0.0.1'
 website_list = ['www.youtube.com', 'youtube.com']
 
+start_hour = int(input('Start time: '))
+stop_hour = int(input('Stop time: '))
+
+now = dt.now()
+
+if start_hour < stop_hour:
+    stop_day = now.day
+else:
+    stop_day = now.day + 1
+
 while True:
-    now = dt.now()
-    if dt(now.year, now.month, now.day, 0) < now < dt(now.year, now.month, now.day, 1):
+    if dt(now.year, now.month, now.day, start_hour) < now < dt(now.year, now.month, stop_day,
+       stop_hour):
         print('Websites are being blocked')
         with open(hosts_path, 'r+') as file:
             content = file.read()
