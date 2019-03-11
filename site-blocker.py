@@ -16,8 +16,8 @@ else:
     stop_day = now.day + 1
 
 while True:
-    if dt(now.year, now.month, now.day, start_hour) < now < dt(now.year, now.month, stop_day,
-       stop_hour):
+    if dt(now.year, now.month, now.day, start_hour) < dt.now() < dt(now.year, now.month, stop_day,
+    stop_hour):
         print('Websites are being blocked')
         with open(hosts_path, 'r+') as file:
             content = file.read()
